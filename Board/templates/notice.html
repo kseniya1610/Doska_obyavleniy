@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if post %}
+        <h1>{{ post.title|safe }}
+        <p>
+        <h3>{{ post.text|safe }}
+        <p>
+        <button onclick=location.href="/board/post/{{post.id}}/respond/">Respond</button>
+        <hr>
+    {% endif %}
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="get">
+        {{ filter.form }}
+        <input type="submit" value="Search">
+    </form>
+
+    {% for n in filter.qs %}
+        <h3>{{ n.text|safe }}
+        <hr>
+    {% endfor %}
+{% endblock content %}

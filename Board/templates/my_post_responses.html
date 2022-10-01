@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if post %}
+        <h1>{{ post.title|safe }}
+        <p>
+        <h3>{{ post.text|safe }}
+        <p>
+        <hr>
+        {% for r in responses %}
+        <h1>{{r.response_user}}
+        <p>
+        <h3>{{r.text|safe}}
+        <button onclick=location.href="/board/response/{{r.id}}/delete/">Delete</button>
+            {%if r.accepted == False %}
+                <button onclick=location.href="/board/response/{{post.id}}/accept/">Accept</button>
+            {% else %}
+                <button disabled onclick=location.href="/board/response/{{post.id}}/accept/">Accepted</button>
+            {% endif %}
+            <hr>
+        {% endfor %}
+    {% endif %}
+{% endblock content %}

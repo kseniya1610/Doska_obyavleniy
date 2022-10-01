@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_staff %}
+    <div class="container pt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-6 col-sm-8">
+                <br>
+                <form method="POST" action="" class="form">
+                    {{ form.media }}
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                    <button type="submit" class="btn btn-lg">Send</button>
+                    <p class="float-right" style="margin-top: 0px">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+{% else %}
+    You're not authorized to see this page.
+{% endif %}
+{% endblock content %}

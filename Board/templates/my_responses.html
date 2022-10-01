@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load custom_filters %}
+
+{% load static %}
+
+<head>{% block title %} Board {% endblock title %}</head>
+
+{% block content %}
+
+{% if board %}
+    {% for n in board %}
+        {% if n.user == request.user %}
+            <h1><a href="/accounts/profile/post/{{n.id}}/">{{n.title|safe}}</a>
+            <p>
+            <h2>{{n.text|safe}}
+            <p>
+            <h4>{{n.user}}, {{n.category}}
+            <h4>{{n.creation|date:'M d H:i'}}
+            <p>
+            <button onclick=location.href="/board/post/{{n.id}}/delete/">Delete</button>
+            <button onclick=location.href="/board/post/{{n.id}}/edit/">Edit</button>
+            <hr>
+        {% endif %}
+
+    {% endfor %}
+{% else %}
+    <h1> Nothing to see here, stalker
+{% endif %}
+{% endblock content %}

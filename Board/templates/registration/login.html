@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container pt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-6 col-sm-8">
+            <br>
+            <form method="POST" action="{% url 'login' %}" class="form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="password">Username</label>
+                    <input name="username" type="text" class="form-control" id="id_username" placeholder="username" style="background: #f7f6f4">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input name="password" type="password" class="form-control" id="id_password" placeholder="******" style="background: #f7f6f4">
+                </div>
+                <input type="hidden" name="next" value="{{ next }}">
+                <button type="submit" class="btn btn-lg">Login</button>
+                <p class="float-right" style="margin-top: 0px">
+                </p>
+            </form>
+            <button class="btn btn-lg" onclick=location.href="/accounts/password_reset/">Forgot Password?</button>
+            <p>
+            <button class="btn btn-lg" onclick=location.href="/accounts/register/">Register</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
